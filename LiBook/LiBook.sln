@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiBook.Data", "LiBook.Data\LiBook.Data.csproj", "{24AA629A-ED65-4D45-BC7A-BB03F684D1A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiBook.Data", "LiBook.Data\LiBook.Data.csproj", "{24AA629A-ED65-4D45-BC7A-BB03F684D1A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiBook.Utilities", "LiBook.Utilities\LiBook.Utilities.csproj", "{2A461014-2427-4D08-9555-37813B8D532D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{24AA629A-ED65-4D45-BC7A-BB03F684D1A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24AA629A-ED65-4D45-BC7A-BB03F684D1A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24AA629A-ED65-4D45-BC7A-BB03F684D1A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A461014-2427-4D08-9555-37813B8D532D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A461014-2427-4D08-9555-37813B8D532D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A461014-2427-4D08-9555-37813B8D532D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A461014-2427-4D08-9555-37813B8D532D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
