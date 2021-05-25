@@ -1,0 +1,78 @@
+﻿@model IEnumerable<LiBook.Models.AuthorViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        
+    </div>
+    <div class="col-md-6 text-right">
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-action="Create" class="btn btn-success fa fa-plus"></a>
+        }
+    </div>
+</div>
+<input class="form-control border-right-0 border-left-0 border-top-0" style="border-bottom: 2px solid rgb(127, 0, 152)" type="text" placeholder="Search" aria-label="Search" id="search" />
+<br />
+<div class="row card-columns">
+    @foreach (var author in Model)
+    {
+        <div class="col-md-3 author">
+            <div class="card">
+                @if (!string.IsNullOrEmpty(author.ImagePath))
+                {
+                    <img class="h-50 card-img-top" src="/pics/Authors/@author.ImagePath" alt="Card image cap">
+                }
+                else
+                {
+                    <img class="h-50 card-img-top" src="/pics/Authors/default.png" alt="Card image cap">
+                }
+                <div class="card-body">
+                    <h5 class="card-title">@author.LastName @author.FirstName</h5>
+
+                    <p class="card-text text-justify">
+                        @if (string.IsNullOrEmpty(author.Biography))
+                        {
+                        <p>There is no boigraphy provided for this author.</p>
+                    }
+                    else if (author.Biography.Length > 125)
+                    {
+                        @(author.Biography.Substring(0, 125) + "...")
+                    }
+
+                    else
+                    {
+                        <p>
+                            @author.Biography
+                        </p>
+                    }
+                        </p>
+                        <div class="text-right">
+                            @await Component.InvokeAsync("AuthorTabActions", new { model = author })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+</div>
+
+<script src="/lib/jquery/dist/jquery.js"></script>
+<script src="/js/site.js"></script>
+<script type="text/javascript">
+    highlight("menu_authors");
+</script>
+<script type="text/javascript">
+    $("#search").keyup(function () {
+        var txt = $('#search').val();
+        $('.author').each(function () {
+            $(this).hide();
+            if ($(this).text().toUpperCase().indexOf(txt.toUpperCase()) != -1) {
+                $(this).show();
+            }
+        });
+    });
+</script>

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<LiBook.Models.GenreViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-6">
+    </div>
+    <div class="col-md-6 text-right">
+        <a asp-action="Create" class="btn btn-success fa fa-plus"></a>
+    </div>
+</div>
+
+<div class="row card-columns">
+    @foreach (var genre in Model)
+    {
+        <div class="col-md-3">
+            <div class="card" style="border-left: 8px solid #@genre.Color;">
+                <div class="card-body">
+                    <h5 class="card-title">@genre.Name</h5>
+                    <div class="text-right">
+                        <a asp-action="Edit" asp-route-id="@genre.Id" class="btn btn-success fa fa-pencil"></a>
+                        <a asp-action="Delete" asp-route-id="@genre.Id" class="btn btn-danger fa fa-trash-o"></a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        }
+</div>
+
+<script src="/lib/jquery/dist/jquery.js"></script>
+<script src="/js/site.js"></script>
+<script type="text/javascript">
+    highlight("menu_genres");
+</script>

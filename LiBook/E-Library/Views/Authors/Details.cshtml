@@ -1,0 +1,75 @@
+﻿@model LiBook.Models.AuthorViewModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="background-color: rgba(255, 255, 255, 0.7); padding: 2em;" class="card">
+    <div class="row">
+        <div class="container-fluid">
+            <span class="text-primary">
+                <a asp-action="Index" asp-controller="Home">LiBook</a>
+                &#8594;
+                <a asp-action="Index">Authors</a>
+                &#8594;
+                @Model.FirstName @Model.LastName
+            </span>
+        </div>
+        <br/>
+        <hr/>
+        <div class="col-md-4">
+            <img src="~/pics/Authors/@Model.ImagePath" class="img-fluid"/>
+        </div>
+        <div class="col-md-8">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Biography)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Biography)
+                </dd>
+                <dd class="text-right">
+                    @await Component.InvokeAsync("AuthorDetailsManagement", new {model = Model})
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+<br/>
+
+<div style="background-color: rgba(255, 255, 255, 0.7); padding: 2em;" class="card">
+    <h2>Books</h2>
+    <hr/>
+    <div class="row">
+        @foreach (var authorBook in Model.AuthorsBooks)
+        {
+            var book = authorBook.Book;
+            <div class="col-md-2">
+                <div class="card">
+                    @if (!string.IsNullOrEmpty(book.ImagePath))
+                    {
+                        <img class="card-img-top" src="/pics/Books/@book.ImagePath" alt="Card image cap">
+                    }
+                    else
+                    {
+                        <img class="card-img-top" src="/pics/Books/default.png" alt="Card image cap">
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            <a asp-action="Details" asp-route-id="@book.Id" asp-controller="Books">@book.Title</a>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script src="/lib/jquery/dist/jquery.js"></script>
+<script src="/lib/jquery/dist/jquery.backstretch.js"></script>
+<script type="text/javascript" src="/js/bg.js"></script>
+<script type="text/javascript">
+    bg("/pics/Authors/@Model.ImagePath");
+</script>
