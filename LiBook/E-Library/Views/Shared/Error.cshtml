@@ -1,0 +1,30 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<div class="row">
+    <div class="col-md-9">
+        <h2 class="text-danger">@Model.Exception.Message</h2>
+
+        @if (Model.ShowRequestId)
+        {
+            <p>
+                <strong>Request ID:</strong> <code>@Model.RequestId</code>
+            </p>
+        }
+
+        <div>
+            Some error occured during the processing your request.
+            <p>
+                <b>Message:</b>
+                @Model?.Exception?.Message
+            </p>
+        </div>
+        <a href="/" class="btn btn-success">Go Home</a>
+    </div>
+    <div class="col-md-3">
+        <img src="/images/ops.png" class="img-fluid" />
+    </div>
+</div>
+
